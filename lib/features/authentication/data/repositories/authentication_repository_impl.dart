@@ -16,6 +16,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<Either<Failure, OK>> login(LoginDataEntity loginData) async {
     try {
+      print('object');
       await authenticationRemoteDataSource.login(
         loginData.userName,
         loginData.password,
