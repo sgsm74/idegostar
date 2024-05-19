@@ -1,3 +1,4 @@
+import 'package:idegostar/core/services/http_service.dart';
 import 'package:idegostar/core/utils/ok.dart';
 
 abstract class AuthenticationRemoteDataSource {
@@ -12,6 +13,9 @@ abstract class AuthenticationRemoteDataSource {
 
 class AuthenticationRemoteDataSourceImpl
     implements AuthenticationRemoteDataSource {
+  const AuthenticationRemoteDataSourceImpl({required this.service});
+  final HTTPService service;
+
   @override
   Future<OK> login(String userName, String password) {
     // TODO: implement login
