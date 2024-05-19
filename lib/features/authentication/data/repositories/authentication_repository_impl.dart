@@ -16,11 +16,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<Either<Failure, OK>> login(LoginDataEntity loginData) async {
     try {
-      print('object');
-      await authenticationRemoteDataSource.login(
-        loginData.userName,
-        loginData.password,
-      );
+      await authenticationRemoteDataSource.login(loginData);
       return Right(OK());
     } on ServerException catch (e) {
       return Left(
@@ -34,8 +30,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<Either<Failure, OK>> singup(SignUpDataEntity signUpData) async {
     try {
-      await authenticationRemoteDataSource.singup(signUpData.firstName,
-          signUpData.lastName, signUpData.nationalCode, signUpData.password);
+      await authenticationRemoteDataSource.singup(signUpData);
       return Right(OK());
     } on ServerException catch (e) {
       return Left(

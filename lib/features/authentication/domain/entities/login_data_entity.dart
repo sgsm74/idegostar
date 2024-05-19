@@ -12,3 +12,12 @@ class LoginDataEntity extends Equatable {
   @override
   List<Object?> get props => [userName, password];
 }
+
+extension CustomLoginDataEntity on LoginDataEntity {
+  Map<String, dynamic> toJSon() {
+    return {
+      'national_code': userName,
+      'password': password,
+    };
+  }
+}

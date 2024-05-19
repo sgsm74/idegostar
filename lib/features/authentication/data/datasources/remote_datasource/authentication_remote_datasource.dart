@@ -2,15 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:idegostar/core/errors/errors.dart';
 import 'package:idegostar/core/services/http_service.dart';
 import 'package:idegostar/core/utils/ok.dart';
+import 'package:idegostar/features/authentication/domain/entities/login_data_entity.dart';
+import 'package:idegostar/features/authentication/domain/entities/signup_data_entity.dart';
 
 abstract class AuthenticationRemoteDataSource {
-  Future<OK> login(String userName, String password);
-  Future<OK> singup(
-    String firstName,
-    String lastName,
-    String nationalCode,
-    String password,
-  );
+  Future<OK> login(LoginDataEntity loginData);
+  Future<OK> singup(SignUpDataEntity signUpData);
 }
 
 class AuthenticationRemoteDataSourceImpl
@@ -19,12 +16,9 @@ class AuthenticationRemoteDataSourceImpl
   final HTTPService service;
 
   @override
-  Future<OK> login(String userName, String password) async {
+  Future<OK> login(LoginDataEntity loginData) async {
     try {
-      await service.postData('/login', data: {
-        'national_code': userName,
-        'password': password,
-      });
+      await service.postData('/login', data: loginData.toJSon());
       return OK();
     } on DioException catch (e) {
       throw ServerException(message: e.message ?? '');
@@ -32,21 +26,11 @@ class AuthenticationRemoteDataSourceImpl
   }
 
   @override
-  Future<OK> singup(
-    String firstName,
-    String lastName,
-    String nationalCode,
-    String password,
-  ) async {
+  Future<OK> singup(SignUpDataEntity signUpData) async {
     try {
       await service.postData(
         '/signup',
-        data: {
-          'first_name': firstName,
-          'last_name': lastName,
-          'national_code': nationalCode,
-          'password': password,
-        },
+        data: signUpData.toJSon(),
       );
       return OK();
     } on DioException catch (e) {

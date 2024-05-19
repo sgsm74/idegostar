@@ -15,3 +15,14 @@ class SignUpDataEntity extends Equatable {
   @override
   List<Object?> get props => [nationalCode, password];
 }
+
+extension CustomSignUpDataEntity on SignUpDataEntity {
+  Map<String, dynamic> toJSon() {
+    return {
+      'first_name': firstName,
+      'last_name': lastName,
+      'national_code': nationalCode,
+      'password': password,
+    };
+  }
+}
