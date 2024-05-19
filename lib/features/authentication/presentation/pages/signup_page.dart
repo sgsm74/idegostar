@@ -35,7 +35,7 @@ class _SignUpPageState extends State<SignUpPage> {
             );
           } else if (state is SignupSuccessfullState) {
             Fluttertoast.showToast(
-              msg: 'signup ok',
+              msg: 'ثبت نام با موفقیت انجام شد',
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               timeInSecForIosWeb: 1,
@@ -43,6 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
               textColor: Colors.white,
               fontSize: 16.0,
             );
+            Navigator.pushNamed(context, '/');
           }
         },
         child: SingleChildScrollView(
@@ -103,6 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           controller: firstNameController,
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
+                          textInputAction: TextInputAction.next,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
@@ -135,6 +137,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           controller: nationalCodeController,
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
+                          keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
