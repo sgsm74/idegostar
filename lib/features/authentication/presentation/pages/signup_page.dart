@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idegostar/features/authentication/domain/entities/signup_data_entity.dart';
 import 'package:idegostar/features/authentication/presentation/bloc/authentication_bloc.dart';
-import 'package:idegostar/injection_container.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,8 +21,28 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF2FACE3),
-      body: BlocProvider(
-        create: (context) => sl<AuthenticationBloc>(),
+      body: BlocListener<AuthenticationBloc, AuthenticationState>(
+        listener: (context, state) {
+          if (state is AuthenticationErrorState) {
+            Fluttertoast.showToast(
+                msg: state.message,
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          } else if (state is SignupSuccessfullState) {
+            Fluttertoast.showToast(
+                msg: 'signup ok',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          }
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           textDirection: TextDirection.rtl,

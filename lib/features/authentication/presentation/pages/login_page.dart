@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 16.0);
             } else if (state is LoginSuccessfullState) {
               Fluttertoast.showToast(
-                  msg: 'OK',
+                  msg: 'login ok',
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,

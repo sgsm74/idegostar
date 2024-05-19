@@ -39,12 +39,15 @@ class AuthenticationRemoteDataSourceImpl
     String password,
   ) async {
     try {
-      await service.postData('/signup', data: {
-        'first_name': firstName,
-        'last_name': lastName,
-        'national_code': nationalCode,
-        'password': password,
-      });
+      await service.postData(
+        '/signup',
+        data: {
+          'first_name': firstName,
+          'last_name': lastName,
+          'national_code': nationalCode,
+          'password': password,
+        },
+      );
       return OK();
     } on DioException catch (e) {
       throw ServerException(message: e.message ?? '');
