@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:idegostar/features/authentication/domain/entities/login_data_entity.dart';
 import 'package:idegostar/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:idegostar/injection_container.dart';
 
@@ -138,20 +139,32 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(
                         height: 16,
                       ),
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF2FACE3),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Text(
-                          'ورود',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () {
+                          BlocProvider.of<AuthenticationBloc>(context).add(
+                            LoginEvent(
+                              loginData: LoginDataEntity(
+                                userName: usernameController.text,
+                                password: passwordController.text,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF2FACE3),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Text(
+                            'ورود',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
