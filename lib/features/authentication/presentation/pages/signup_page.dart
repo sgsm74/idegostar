@@ -121,6 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           controller: lastNameController,
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
+                          textInputAction: TextInputAction.next,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
@@ -138,6 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
                           keyboardType: TextInputType.number,
+                          textInputAction: TextInputAction.next,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
@@ -155,6 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
                           obscureText: true,
+                          textInputAction: TextInputAction.done,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(

@@ -101,6 +101,8 @@ class _LoginPageState extends State<LoginPage> {
                             controller: usernameController,
                             textAlign: TextAlign.right,
                             textDirection: TextDirection.rtl,
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
@@ -118,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                             textAlign: TextAlign.right,
                             textDirection: TextDirection.rtl,
                             obscureText: true,
+                            textInputAction: TextInputAction.done,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
@@ -141,6 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Checkbox.adaptive(
                                     value: true,
                                     onChanged: (value) {},
+                                    activeColor: const Color(0xFF2FACE3),
                                   ),
                                   const Text(
                                     'مرا به یاد داشته باش',
