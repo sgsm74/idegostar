@@ -14,3 +14,12 @@ class ServerFailure extends Failure {
 class NetworkFailure extends Failure {
   const NetworkFailure({required super.message});
 }
+
+class ServerException extends Equatable implements Exception {
+  const ServerException({required this.message});
+
+  final String message;
+
+  @override
+  List<Object> get props => [message];
+}

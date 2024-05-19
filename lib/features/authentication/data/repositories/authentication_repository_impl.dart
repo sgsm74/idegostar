@@ -14,14 +14,34 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationRemoteDataSource authenticationRemoteDataSource;
 
   @override
-  Future<Either<Failure, OK>> login(LoginDataEntity loginData) {
-    // TODO: implement login
-    throw UnimplementedError();
+  Future<Either<Failure, OK>> login(LoginDataEntity loginData) async {
+    try {
+      await authenticationRemoteDataSource.login(
+        loginData.userName,
+        loginData.password,
+      );
+      return Right(OK());
+    } on ServerException catch (e) {
+      return Left(
+        ServerFailure(
+          message: e.message,
+        ),
+      );
+    }
   }
 
   @override
-  Future<Either<Failure, OK>> singup(SignUpDataEntity signUpData) {
-    // TODO: implement singup
-    throw UnimplementedError();
+  Future<Either<Failure, OK>> singup(SignUpDataEntity signUpData) async {
+    try {
+      await authenticationRemoteDataSource.singup(signUpData.firstName,
+          signUpData.lastName, signUpData.nationalCode, signUpData.password);
+      return Right(OK());
+    } on ServerException catch (e) {
+      return Left(
+        ServerFailure(
+          message: e.message,
+        ),
+      );
+    }
   }
 }

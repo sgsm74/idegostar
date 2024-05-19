@@ -35,7 +35,7 @@ Future<void> init() async {
     () => DioService(
       dio: Dio(
         BaseOptions(
-          baseUrl: 'https://api.test',
+          baseUrl: 'https://127.0.0.1:8000/',
           receiveTimeout: const Duration(seconds: 50),
         ),
       ),
