@@ -27,7 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Fluttertoast.showToast(
               msg: state.message,
               toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
+              gravity: ToastGravity.TOP,
               timeInSecForIosWeb: 1,
               backgroundColor: Colors.red,
               textColor: Colors.white,
@@ -37,13 +37,12 @@ class _SignUpPageState extends State<SignUpPage> {
             Fluttertoast.showToast(
               msg: 'ثبت نام با موفقیت انجام شد',
               toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
+              gravity: ToastGravity.TOP,
               timeInSecForIosWeb: 1,
               backgroundColor: Colors.green,
               textColor: Colors.white,
               fontSize: 16.0,
             );
-            Navigator.pushNamed(context, '/');
           }
         },
         child: SingleChildScrollView(
