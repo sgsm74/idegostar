@@ -15,10 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Idegostar Task',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF2FACE3)),
         useMaterial3: true,
+        fontFamily: 'Dana',
       ),
       initialRoute: '/',
       routes: {
