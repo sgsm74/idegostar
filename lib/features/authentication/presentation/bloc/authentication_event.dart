@@ -9,30 +9,21 @@ sealed class AuthenticationEvent extends Equatable {
 
 final class SignUpEvent extends AuthenticationEvent {
   const SignUpEvent({
-    required this.firstName,
-    required this.lastName,
-    required this.nationalCode,
-    required this.password,
+    required this.signUpData,
   });
-
-  final String firstName;
-  final String lastName;
-  final String nationalCode;
-  final String password;
+  final SignUpDataEntity signUpData;
 
   @override
-  List<Object> get props => [nationalCode, password];
+  List<Object> get props => [signUpData];
 }
 
 final class LoginEvent extends AuthenticationEvent {
   const LoginEvent({
-    required this.username,
-    required this.password,
+    required this.loginData,
   });
 
-  final String username;
-  final String password;
+  final LoginDataEntity loginData;
 
   @override
-  List<Object> get props => [username, password];
+  List<Object> get props => [loginData];
 }

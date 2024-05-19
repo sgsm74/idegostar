@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:idegostar/core/errors/errors.dart';
 import 'package:idegostar/core/usecase/usecase.dart';
 import 'package:idegostar/core/utils/ok.dart';
+import 'package:idegostar/features/authentication/domain/entities/signup_data_entity.dart';
 import 'package:idegostar/features/authentication/domain/repositories/authentication_repository.dart';
 
 class SignUpUseCase implements UseCase<OK, SignUpParams> {
@@ -13,27 +14,18 @@ class SignUpUseCase implements UseCase<OK, SignUpParams> {
   @override
   Future<Either<Failure, OK>> call(SignUpParams params) {
     return repository.singup(
-      params.firstName,
-      params.lastName,
-      params.nationalCode,
-      params.password,
+      params.signUpData,
     );
   }
 }
 
 class SignUpParams extends Equatable {
   const SignUpParams({
-    required this.firstName,
-    required this.lastName,
-    required this.nationalCode,
-    required this.password,
+    required this.signUpData,
   });
 
-  final String firstName;
-  final String lastName;
-  final String nationalCode;
-  final String password;
+  final SignUpDataEntity signUpData;
 
   @override
-  List<Object?> get props => [nationalCode, password];
+  List<Object?> get props => [signUpData];
 }

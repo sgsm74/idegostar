@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:idegostar/core/errors/errors.dart';
 import 'package:idegostar/core/usecase/usecase.dart';
 import 'package:idegostar/core/utils/ok.dart';
+import 'package:idegostar/features/authentication/domain/entities/login_data_entity.dart';
 import 'package:idegostar/features/authentication/domain/repositories/authentication_repository.dart';
 
 class LoginUseCase implements UseCase<OK, LoginParams> {
@@ -12,19 +13,17 @@ class LoginUseCase implements UseCase<OK, LoginParams> {
 
   @override
   Future<Either<Failure, OK>> call(LoginParams params) {
-    return repository.login(params.username, params.password);
+    return repository.login(params.loginData);
   }
 }
 
 class LoginParams extends Equatable {
   const LoginParams({
-    required this.username,
-    required this.password,
+    required this.loginData,
   });
 
-  final String username;
-  final String password;
+  final LoginDataEntity loginData;
 
   @override
-  List<Object?> get props => [username, password];
+  List<Object?> get props => [loginData];
 }

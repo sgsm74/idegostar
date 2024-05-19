@@ -8,6 +8,11 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final firstNameController = TextEditingController(),
+      lastNameController = TextEditingController(),
+      nationalCodeController = TextEditingController(),
+      passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +68,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 32,
                   ),
                   TextFormField(
+                    controller: firstNameController,
                     textAlign: TextAlign.right,
                     textDirection: TextDirection.rtl,
                     decoration: const InputDecoration(
@@ -78,6 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 16,
                   ),
                   TextFormField(
+                    controller: lastNameController,
                     textAlign: TextAlign.right,
                     textDirection: TextDirection.rtl,
                     decoration: const InputDecoration(
@@ -93,6 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 16,
                   ),
                   TextFormField(
+                    controller: nationalCodeController,
                     textAlign: TextAlign.right,
                     textDirection: TextDirection.rtl,
                     decoration: const InputDecoration(
@@ -108,8 +116,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 16,
                   ),
                   TextFormField(
+                    controller: passwordController,
                     textAlign: TextAlign.right,
                     textDirection: TextDirection.rtl,
+                    obscureText: true,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
